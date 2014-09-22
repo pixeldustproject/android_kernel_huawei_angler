@@ -8246,6 +8246,8 @@ static int sched_dl_global_validate(void)
 	int cpu, ret = 0;
 	unsigned long flags;
 
+	rcu_read_lock();
+
 	/*
 	 * Here we want to check the bandwidth not being set to some
 	 * value smaller than the currently allocated bandwidth in
@@ -8270,6 +8272,8 @@ static int sched_dl_global_validate(void)
 			break;
 	}
 
+	rcu_read_unlock();
+
 	return ret;
 }
 
@@ -8286,6 +8290,7 @@ static void sched_dl_do_global(void)
 	if (global_rt_runtime() != RUNTIME_INF)
 		new_bw = to_ratio(global_rt_period(), global_rt_runtime());
 
+	rcu_read_lock();
 	/*
 	 * FIXME: As above...
 	 */
@@ -8299,6 +8304,7 @@ static void sched_dl_do_global(void)
 
 		rcu_read_unlock_sched();
 	}
+	rcu_read_unlock();
 }
 
 static int sched_rt_global_validate(void)
