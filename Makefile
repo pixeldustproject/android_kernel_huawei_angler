@@ -393,6 +393,8 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-
                    -fmodulo-sched-allow-regmoves -ffast-math -funswitch-loops -fpredictive-commoning -fsingle-precision-constant -fno-store-merging \
                    -fshrink-wrap-separate -std=gnu11
 
+KBUILD_CFLAGS	+= -mcpu=cortex-a57
+
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
