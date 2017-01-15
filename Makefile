@@ -398,6 +398,8 @@ KBUILD_CFLAGS	+= $(call cc-option,-mlow-precision-recip-sqrt,) \
 # Strip linker
 LD		+= --strip-debug -O2
 
+KBUILD_CFLAGS	+= -mcpu=cortex-a57
+
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
