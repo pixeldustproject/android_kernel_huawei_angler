@@ -4469,7 +4469,7 @@ dhd_allocate_if(dhd_pub_t *dhdpub, int ifidx, char *name,
 	uint8 *mac, uint8 bssidx, bool need_rtnl_lock)
 {
 	dhd_info_t *dhdinfo = (dhd_info_t *)dhdpub->info;
-	dhd_if_t *ifp;
+	dhd_if_t *ifp = NULL;
 
 	if((dhdinfo == NULL) || (ifidx >= DHD_MAX_IFS))
 		return NULL;
