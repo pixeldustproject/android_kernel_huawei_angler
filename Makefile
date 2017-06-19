@@ -336,11 +336,19 @@ CORTEX_OPTS	= -march=armv8-a+crc -mcpu=cortex-a57+crypto -mtune=cortex-a57.corte
 
 GCC_OPTS	= $(GRAPHITE) $(EXTRA_OPTS) $(CORTEX_OPTS)
 
+export FASTER_FLAGS := \
+	-mcpu=cortex-a57.cortex-a53+crypto \
+	-O3 \
+	-DNDEBUG -g0 \
+	-Werror \
+	-Wno-shift-overflow \
+	-Wno-unused-const-variable
+
 # Make variables (CC, etc...)
 
 AS		= $(CROSS_COMPILE)as
 LD		= $(CROSS_COMPILE)ld
-CC		= $(CCACHE) $(CROSS_COMPILE)gcc $(GCC_OPTS) -w
+CC		= $(CCACHE) $(CROSS_COMPILE)gcc $(GCC_OPTS) $(FASTER_FLAGS) -w
 CPP		= $(CC) -E
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
@@ -392,8 +400,6 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-
                    -ftree-loop-distribute-patterns -ftree-slp-vectorize -fvect-cost-model -ftree-partial-pre -fgcse-lm -fgcse-sm -fsched-spec-load \
                    -fmodulo-sched-allow-regmoves -ffast-math -funswitch-loops -fpredictive-commoning -fsingle-precision-constant -fno-store-merging \
                    -fshrink-wrap-separate -std=gnu11
-
-KBUILD_CFLAGS	+= -mcpu=cortex-a57
 
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
