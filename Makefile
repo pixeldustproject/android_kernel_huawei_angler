@@ -600,6 +600,9 @@ all: vmlinux
 # Disable maybe-uninitialized warnings
 KBUILD_CFLAGS	+= $(call cc-disable-warning,maybe-uninitialized,)
 
+# Disable compiler halt if a variable is unused
+KBUILD_CFLAGS 	+= $(call cc-disable-warning, unused-variable)
+
 # Disable unused-constant-variable warnings
 KBUILD_CFLAGS	+= $(call cc-disable-warning,unused-const-variable,)
 
