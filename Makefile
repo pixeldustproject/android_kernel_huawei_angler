@@ -600,12 +600,13 @@ KBUILD_CFLAGS	+= $(call cc-disable-warning,unused-const-variable,)
 # Needed to unbreak GCC 7.x and above
 KBUILD_CFLAGS   += $(call cc-option,-fno-store-merging,)
 
+# Disable array-bounds warnings
+KBUILD_CFLAGS += $(call cc-disable-warning,array-bounds)
+
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -O3
-KBUILD_CFLAGS += $(call cc-disable-warning,array-bounds)
 else
-KBUILD_CFLAGS	+= -Ofast -Wno-maybe-uninitialized
-KBUILD_CFLAGS += $(call cc-disable-warning,array-bounds)
+KBUILD_CFLAGS	+= -Ofast
 endif
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
