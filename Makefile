@@ -618,6 +618,22 @@ KBUILD_CFLAGS   += $(call cc-option,-fno-store-merging,)
 # Kill format truncation warnings
 KBUILD_CFLAGS   += $(call cc-disable-warning,format-truncation,)
 
+# Disable multistatement-macros warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,multistatement-macros,)
+
+# Disable duplicate-decl-specifier warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,duplicate-decl-specifier,)
+
+# Disable nonnull warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,nonnull,)
+
+# Disable memset-elt-size warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,memset-elt-size,)
+
+# Disable array-bounds warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,array-bounds,)
+
+
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os
 else
