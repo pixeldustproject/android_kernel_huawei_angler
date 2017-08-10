@@ -633,6 +633,14 @@ KBUILD_CFLAGS   += $(call cc-disable-warning,memset-elt-size,)
 # Disable array-bounds warnings
 KBUILD_CFLAGS   += $(call cc-disable-warning,array-bounds,)
 
+# Disable format-overflow warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,format-overflow,)
+
+# Disable bool-operation warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,bool-operation,)
+
+# Disable int-in-bool-context warnings
+KBUILD_CFLAGS   += $(call cc-disable-warning,int-in-bool-context,)
 
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os
